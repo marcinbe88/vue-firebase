@@ -8,10 +8,22 @@
 </head>
 <body>
     <h1>Hello, Vue!</h1>
-    
+
     <div id="app">
-        <h2>I am the template now</h2>
+        <div v-if = "showBooks">
+            <p>{{ title }} - {{ author }} - {{ age }}</p>
+        </div>
+        <button @click = "toggleShowBooks">
+            <span v-if = "showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+        </button>
+
+        <div v-show = "showBooks">Currently showing books</div>
+        <!-- <h2>I am the hard-coded template now</h2>
         <p>{{ title }} - {{ author }} - {{ age }}</p>
+        <button @click = "age++">Increase age</button>
+        <button @click = "age--">Decrease age</button>
+        <div @click = "changeTitle('Lord of the Rings')">Change book title</div> -->
     </div>
 
     <script src = "app.js"></script>
