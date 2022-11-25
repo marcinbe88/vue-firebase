@@ -1,10 +1,18 @@
  const app = Vue.createApp({
     data() {
         return{
+            url: "http://racepix.pl",
             showBooks: true,
-            title: "The Final Empire!",
-            author: "Brandon Sanderson",
-            age: 45,
+            books: [
+                {title: 'name of the book', author: 'patrick rothfuss', img: '', isFav: true},
+                {title: 'harry potter 1', author: 'j k rowling', img: '', isFav: false},
+                {title: 'harry potter 4', author: 'j k rowling', img: '', isFav: true}
+            ],
+            // title: "The Final Empire!",
+            // author: "Brandon Sanderson",
+            // age: 45,
+            x: 0,
+            y: 0,
         }
     },
     methods: {
@@ -22,7 +30,16 @@
             }
         },
         handleMousemove(e) {
-
+            this.x = e.offsetX
+            this.y = e.offsetY
+        },
+        toggleIsFav(book) {
+            book.isFav = !book.isFav
+        },
+    },
+    computed: {
+        filteredBooks() {
+            return this.books.filter((book) => book.isFav)
         }
     }
  })
