@@ -3,11 +3,28 @@
     <h1>{{ title }}</h1>
     <p>Welcome</p>
     <div v-if="showModal">
-      <Modal :header="header" :text="text" theme="sale" @close="toggleModal"/>
+      <Modal :header="header" :text="text" theme="sale" @close="toggleModal">
+        <h1>Hello vue!</h1>
+        <p>Let's see how it works</p>
+        <template v-slot:links>
+          <a href="#">Sign up now</a>
+          <a href="#">More info</a>
+        </template>
+      </Modal>
     </div>
-    <button @click = "toggleModal">Open modal</button>
-    <!-- <input type = "text" ref = "name">
-    <button @click = "handleClick">click me</button> -->
+    
+    <div v-if="showModalTwo">
+      <Modal theme="saleTwo" @close="toggleModalTwo">
+        <h1>Modal Two</h1>
+        <p>Let's see modal two</p>
+        <template v-slot:links>
+        </template>
+      </Modal>
+    </div>
+    
+    <button @click.alt = "toggleModal">Open modal (alt)</button><br>
+    <button @click = "toggleModalTwo">Open another modal</button>
+
   </div>
 </template>
 
@@ -20,14 +37,18 @@ export default {
   data() {
     return {
       title: 'My first vue app :)',
-      header: "Sign up for...",
-      text: "Grab something",
-      showModal: false
+      // header: "Sign up for...",
+      // text: "Grab something",
+      showModal: false,
+      showModalTwo: false,
     }
   },
   methods: {
     toggleModal() {
       this.showModal = !this.showModal
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo
     }
   }
   // methods: {
@@ -37,7 +58,6 @@ export default {
   //     this.$refs.name.focus()
   //   }
   // }
-
 }
 </script>
 

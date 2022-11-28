@@ -1,8 +1,20 @@
 <template>
-    <div class = "backdrop" @click="closeModal">
+    <div class = "backdrop" @click.self="closeModal">
         <div class = "modal" :class="{ sale: theme === 'sale' }">
-            <h1>{{ header }}</h1>
-            <p>{{ text }}</p>
+            <slot>default content</slot>
+            <div class="actions">
+                <slot name="links"></slot>
+            </div>
+            <!-- <h1>{{ header }}</h1>
+            <p>{{ text }}</p> -->
+        </div>
+        <div class = "modalTwo" :class="{ sale: theme === 'saleTwo' }">
+            <slot>default content</slot>
+            <div class="actions">
+                <slot name="links"></slot>
+            </div>
+            <!-- <h1>{{ header }}</h1>
+            <p>{{ text }}</p> -->
         </div>
     </div>
 </template>
@@ -44,5 +56,12 @@
     }
     .modal.sale h1 {
         color: white;
+    }
+    .modalTwo.saleTwo {
+        background: khaki;
+        color: white;
+    }
+    .modalTwo.saleTwo h1 {
+        color: purple;
     }
 </style>
